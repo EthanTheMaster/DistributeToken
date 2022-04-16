@@ -25,8 +25,7 @@ Vue.createApp({
         }
     },
     mounted() {
-        // fetch('./DistributeContract.json')
-        fetch('../build/contracts/Distribute.json')
+        fetch('./DistributeContract.json')
             .then(response => response.json())
             .then(data => {
                 this.distributeContractData = data;

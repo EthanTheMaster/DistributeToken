@@ -12,6 +12,13 @@ module.exports = async function main (callback) {
 
         // let txn = await distribute.redistribute([accounts[1], accounts[2], accounts[3]], [3333, 3333, 3334], {from: accounts[0], value: 100});
         let txn = await distribute.simulateRedistribute([3333, 3333, 3334], 100);
+
+        // Test for the contract aborting when an overflow occurs:
+        // let txn = await distribute.simulateRedistribute([
+        //     "57896044618658097711785492504343953926634992332820282019728792003956564819968", // 2^255
+        //     "57896044618658097711785492504343953926634992332820282019728792003956564819968",
+        //     "57896044618658097711785492504343953926634992332820282019728792003956564819968"
+        // ], 100);
         console.log(txn[0].toString()); 
 
         console.log(`${accounts[0]}: ${await web3.eth.getBalance(accounts[0])}`);
